@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quera post</title>
+    <!-- //jab ki syle link kare jab server ko restart kare -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>qura posts</h1>
+    <% for(post of posts) {%>
+        <div>
+             <h3 class="username">@<%=post.username  %></h3>
+             <h4 class="content"><%= post.content %></h4>
+        
+             <a href="http://localhost:8000/posts/<%= post.id %>">See in Details</a><br>
+             <a href="http://localhost:8000/posts/<%= post.id %>/edit">Edit</a><br>
+             
+             <form action="/posts/<%= post.id %>?_method=DELETE" method="post">
+                <button>Delete Post</button>
+             </form>
+        </div>
+    <% } %>
+
+    <br>
+    <hr>
+    <a href="http://localhost:8000/posts/new">Create New Post</a>
+</body>
+</html>
