@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miniWhaatsapp</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    
+    <h3>All Chats</h3>
+    <br>
+    <form action="/chats/new" method="GET">
+        <button>New Chat</button>
+    </form>
+    <br>
+   <% for(let chat of chats){ %>
+        <div class="chat">
+            <p>From: <%= chat.from %></p>
+            <div class="msg">
+                <p> <%= chat.msg %></p>
+                <form action="/chats/<%= chat._id %>/edit" method="GET" >
+                    <button>Edit</button>
+                </form>
+            </div>
+            
+            <p>Recevied by<%= chat.to %></p>
+            <hr>
+            <p> <%= chat.created_at.toString().split(" ").slice(0,4).join(" ") %></p>
+        </div>
+        <br>
+        <br>
+    <%}%>
 </body>
 </html>
